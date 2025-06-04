@@ -1,0 +1,147 @@
+/* productosList.css */
+
+.main-contein {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ASIDE FILTROS */
+.filter {
+  flex: 0 0 250px;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-categori {
+  margin-bottom: 2rem;
+}
+
+.filter-categori h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.filter-categori label {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #555;
+  cursor: pointer;
+}
+
+.filter-categori input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* COLECCIONES */
+.collection {
+  flex: 1;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.options h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sort-option label {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.sort-option select {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .main-contein {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .filter,
+  .collection {
+    width: 100%;
+  }
+
+  .options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px !important;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.product-card h3 {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  font-weight: bold;
+  color: #2e8b57;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-weight: bold;
+  padding: 1rem;
+  background: #ffe5e5;
+  border-radius: 8px;
+  text-align: center;
+}
