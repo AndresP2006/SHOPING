@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./productosList.css";
 import { useNavigate } from "react-router-dom";
 
-function ProductosList() {
+function ProductosList({ buscarTermino }) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
   const [orden, setOrden] = useState("Relevante");
@@ -25,6 +25,13 @@ function ProductosList() {
     fectProductos();
   }, []);
 
+  const normalizarTexto = (texto) => {
+    return texto
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  };
+
   const ProductosFiltrados = productos.filter((prod) => {
     const macthCategoria =
       filtros.categoria.length === 0 ||
@@ -32,7 +39,14 @@ function ProductosList() {
     const macthTipo =
       filtros.tipo.length === 0 || filtros.tipo.includes(prod.tipo);
 
-    return macthCategoria && macthTipo;
+    const macthBuscar =
+      !buscarTermino ||
+      normalizarTexto(prod.nombre).includes(normalizarTexto(buscarTermino)) ||
+      normalizarTexto(prod.descripcion).includes(
+        normalizarTexto(buscarTermino)
+      );
+
+    return macthCategoria && macthTipo && macthBuscar;
   });
   function hadleOrdenEvent(e) {
     setOrden(e.target.value);
